@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>벤처인증 전문 특허 변리사 | 박세준 변리사 · 특허 아키텍트</title>
+<!-- 유튜브 임베드는 Referer 정보가 필요합니다. no-referrer / same-origin 이면 오류 153 -->
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+
 <meta name="description" content="기술이 없는 게 아닙니다. 증명할 구조가 없는 겁니다. 벤처인증 전문 특허 변리사가 기술 근거부터 직접 설계합니다." />
 
 <!-- 링크 공유 미리보기 — 배포 후 아래 URL 두 곳을 실제 주소로 바꾸세요 -->
@@ -82,7 +85,7 @@ body { background: #F5F2FF; }
 }
 .vc-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--violet); }
 
-.vc-h1 { font-size: clamp(1.55rem, 3.4vw, 2.25rem); font-weight: 800; line-height: 1.34; letter-spacing: -.05em; margin: 0 0 18px; }
+.vc-h1 { font-size: clamp(1.55rem, 3.4vw, 2.25rem); font-weight: 800; line-height: 1.36; letter-spacing: -.05em; margin: 0 0 22px; }
 .vc-h2 { font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 800; line-height: 1.34; letter-spacing: -.04em; margin: 0 0 14px; }
 .vc-h3 { font-size: clamp(1.1rem, 1.9vw, 1.32rem); font-weight: 700; line-height: 1.45; letter-spacing: -.03em; margin: 0 0 10px; }
 .vc-lead { font-size: clamp(1rem, 1.5vw, 1.1rem); color: var(--ink-2); }
@@ -169,19 +172,20 @@ body { background: #F5F2FF; }
 }
 .vc-hero-grid { position: relative; display: grid; grid-template-columns: 1.14fr .86fr; gap: 52px; align-items: start; }
 .vc-quote-line {
-  display: block; font-size: clamp(1.2rem, 2.5vw, 1.68rem); font-weight: 700;
-  color: var(--ink); letter-spacing: -.05em; line-height: 1.32; margin-bottom: 12px;
+  display: block; font-size: clamp(1.12rem, 2.3vw, 1.55rem); font-weight: 700;
+  color: var(--ink); letter-spacing: -.05em; line-height: 1.4;
+  margin-bottom: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
 }
 .vc-hero-sub {
   max-width: 480px; font-size: clamp(1rem, 1.7vw, 1.1rem); font-weight: 500;
-  letter-spacing: -.035em; line-height: 1.6; color: var(--ink-2); margin-bottom: 30px;
+  letter-spacing: -.035em; line-height: 1.65; color: var(--ink-2); margin-bottom: 34px;
 }
 .vc-hero-sub strong { font-weight: 700; color: var(--ink); }
 
 /* ── 증명 카드 3장 ───────────────────────────────── */
 .vc-proof-label {
   font-size: clamp(.98rem, 1.7vw, 1.12rem); font-weight: 700; color: var(--ink);
-  margin-bottom: 14px; letter-spacing: -.035em; line-height: 1.45;
+  margin-bottom: 14px; letter-spacing: -.035em; line-height: 1.5;
 }
 .vc-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .vc-pcard {
@@ -216,6 +220,7 @@ body { background: #F5F2FF; }
 .vc-strip-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 30px; }
 .vc-strip-in em { font-style: normal; font-size: 13px; font-weight: 700; color: var(--muted); }
 .vc-strip-in span { font-size: 15px; font-weight: 700; color: var(--ink-2); letter-spacing: -.03em; }
+.vc-strip-items { display: contents; }   /* PC 는 한 줄 */
 .vc-strip-in span::before {
   content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 2px;
   background: var(--violet); margin-right: 8px; vertical-align: 2px;
@@ -634,15 +639,22 @@ body { background: #F5F2FF; }
   /* 모바일 전용 줄바꿈 켜기 */
   .vc-brm { display: inline; }
 
+  /* 혜택 띠: 안내문 한 줄 + 키워드 3개씩 2줄, 모두 가운데 */
+  .vc-strip { margin-top: 44px; padding: 20px 0; }
+  .vc-strip-in { flex-direction: column; gap: 14px; }
+  .vc-strip-in em { text-align: center; }
+  .vc-strip-items {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px 4px; width: 100%;
+  }
+  .vc-strip-items span { text-align: center; font-size: 12.5px; letter-spacing: -.045em; }
+  .vc-strip-items span::before { width: 5px; height: 5px; margin-right: 5px; }
+
   /* '어느 쪽이든 시작은 같습니다' 를 윗줄에, 절차를 아랫줄에 */
   .vc-plan-flow { flex-direction: column; gap: 12px; text-align: center; }
   .vc-plan-flow em { margin-right: 0; }
   .vc-flow-steps { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
-  .vc-benefits { grid-template-columns: repeat(3, 1fr); gap: 22px 10px; padding: 30px 16px; }
-  .vc-benefit .vc-bico { width: 44px; height: 44px; border-radius: 13px; margin-bottom: 10px; }
-  .vc-benefit h4 { font-size: 13.5px; }
-  .vc-benefit p { font-size: 11.5px; }
-  .vc-benefit em { font-size: 10.5px; }
+  .vc-benefits { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .vc-card { padding: 26px 22px; }
   .vc-formcard { padding: 24px 20px; }
   .vc-qblock { margin-bottom: 38px; }
@@ -786,12 +798,14 @@ body { background: #F5F2FF; }
     <div class="vc-strip vc-rv">
       <div class="vc-wrap vc-strip-in">
         <em>벤처인증을 받으면</em>
-        <span>세제 혜택</span>
-        <span>지원사업 가점</span>
-        <span>특허 우선심사</span>
-        <span>금융 우대</span>
-        <span>인재 확보</span>
-        <span>대외 공신력</span>
+        <div class="vc-strip-items">
+          <span>세제 혜택</span>
+          <span>지원사업 가점</span>
+          <span>특허 우선심사</span>
+          <span>금융 우대</span>
+          <span>인재 확보</span>
+          <span>대외 공신력</span>
+        </div>
       </div>
     </div>
   </header>
@@ -952,7 +966,7 @@ body { background: #F5F2FF; }
         <div class="vc-video vc-rv">
           <div class="vc-video-frame">
             <iframe src="https://www.youtube.com/embed/6-fvDA0DusI?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0" title="벤처인증 안내 영상 1" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <div class="vc-video-cap">
             <b>영상 01</b>
@@ -963,7 +977,7 @@ body { background: #F5F2FF; }
         <div class="vc-video vc-rv">
           <div class="vc-video-frame">
             <iframe src="https://www.youtube.com/embed/t_IK_K0ltN4?rel=0" title="벤처인증 안내 영상 2" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <div class="vc-video-cap">
             <b>영상 02</b>

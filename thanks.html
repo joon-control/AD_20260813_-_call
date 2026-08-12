@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>신청이 접수되었습니다 | 박세준 변리사</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 
@@ -55,7 +56,11 @@ body { background: #F5F2FF; }
   box-shadow: 0 20px 42px -16px rgba(91,61,245,.8);
 }
 .vc-h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -.05em; line-height: 1.3; margin: 0 0 16px; }
-.vc-sub { font-size: clamp(1rem, 1.6vw, 1.12rem); color: var(--ink-2); margin: 0 auto; max-width: 560px; text-align: center; }
+.vc-sub {
+  font-size: clamp(1rem, 1.6vw, 1.12rem); color: var(--ink-2);
+  margin: 0 auto; max-width: 620px; text-align: center;
+  line-height: 1.65; word-break: keep-all;
+}
 .vc-caller {
   display: inline-flex; align-items: center; gap: 11px; margin: 4px 0 14px;
   background: var(--white); border: 1px solid var(--line); border-radius: 999px;
@@ -170,7 +175,7 @@ body { background: #F5F2FF; }
         <span><b>박세준 변리사</b>가 직접 연락드립니다</span>
       </div>
       <p class="vc-sub" id="vc-plan-line">
-        박세준 변리사가 직접 확인한 뒤, 대표님 회사에 맞는 방향을 상담에서 말씀드리겠습니다.
+        박세준 변리사가 직접 확인한 뒤,<br />대표님 회사에 맞는 방향을 상담에서 말씀드리겠습니다.
       </p>
       <div class="vc-promise">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
@@ -236,14 +241,14 @@ body { background: #F5F2FF; }
         <div class="vc-video">
           <div class="vc-video-frame">
             <iframe src="https://www.youtube.com/embed/6-fvDA0DusI" title="벤처인증 안내 영상 1" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <div class="vc-video-cap">벤처인증, 왜 떨어지는가</div>
         </div>
         <div class="vc-video">
           <div class="vc-video-frame">
             <iframe src="https://www.youtube.com/embed/t_IK_K0ltN4" title="벤처인증 안내 영상 2" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <div class="vc-video-cap">기술이 없는 회사도 가능한 이유</div>
         </div>
@@ -266,7 +271,7 @@ body { background: #F5F2FF; }
       <p style="margin:0; font-size:12.5px; line-height:1.7;">
         마커블 · 대표 박세준 · 사업자등록번호 472-74-00225 · 통신판매업 제2023-서울금천-2693호<br />
         070-4138-1116 · team@markable.co.kr<br />
-        <a href="/privacy" style="text-decoration:underline;">개인정보처리방침</a> · © 2026 마커블
+        <a href="https://policy.markable.kr/privacy" target="_blank" rel="noopener" style="text-decoration:underline;">개인정보처리방침</a> · © 2026 마커블
       </p>
     </div>
   </footer>
@@ -291,13 +296,15 @@ body { background: #F5F2FF; }
 
   /* 선택한 서비스에 따라 한 줄만 다르게 (확정이 아니라 '확인해 드립니다' 톤) */
   var lines = {
-    'consulting':   '사업계획서 작성부터 함께 볼 수 있도록 준비해 두겠습니다. 상담에서 지금 회사에 맞는 방향을 확인해 드립니다.',
-    'patent-first': '특허부터 시작하는 경로를 신청해 주셨습니다. 상담에서 어느 단계부터 시작하는 것이 좋을지 확인해 드립니다.',
-    'full':         '전 과정 대행을 신청해 주셨습니다. 상담에서 현재 요건과 일정을 함께 확인해 드립니다.'
+    'consulting':   '사업계획서 작성부터 함께 볼 수 있도록 준비해 두겠습니다.<br />상담에서 지금 회사에 맞는 방향을 확인해 드립니다.',
+    'patent-first': '특허부터 시작하는 경로를 신청해 주셨습니다.<br />상담에서 어느 단계부터 시작하는 것이 좋을지 확인해 드립니다.',
+    'full':         '전 과정 대행을 신청해 주셨습니다.<br />상담에서 현재 요건과 일정을 함께 확인해 드립니다.'
   };
   var plan = params.get('plan');
   if (plan && lines[plan]) {
-    document.getElementById('vc-plan-line').textContent = lines[plan];
+    /* 위 문구는 직접 작성한 고정 문자열이라 innerHTML 로 넣어도 안전합니다.
+       (이름처럼 방문자가 입력한 값은 아래에서 textContent 로만 처리합니다) */
+    document.getElementById('vc-plan-line').innerHTML = lines[plan];
   }
 
   /* 네이버 예약 링크 — 항상 오늘 날짜로 열리도록 startDate 를 붙임 */
