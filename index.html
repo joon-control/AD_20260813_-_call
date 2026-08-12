@@ -64,6 +64,7 @@ body { background: #F5F2FF; }
 
 .vc-wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 .vc section[id], .vc header[id] { scroll-margin-top: 88px; }
+.vc-brm { display: none; }   /* 모바일에서만 줄바꿈 */
 .vc-band { padding: 100px 0; }
 .vc-band--tight { padding: 76px 0; }
 .vc-band--white { background: var(--white); }
@@ -171,10 +172,17 @@ body { background: #F5F2FF; }
   display: block; font-size: clamp(1.2rem, 2.5vw, 1.68rem); font-weight: 700;
   color: var(--ink); letter-spacing: -.05em; line-height: 1.32; margin-bottom: 12px;
 }
-.vc-hero-sub { max-width: 470px; font-size: 1.05rem; color: var(--ink-2); margin-bottom: 30px; }
+.vc-hero-sub {
+  max-width: 480px; font-size: clamp(1rem, 1.7vw, 1.1rem); font-weight: 500;
+  letter-spacing: -.035em; line-height: 1.6; color: var(--ink-2); margin-bottom: 30px;
+}
+.vc-hero-sub strong { font-weight: 700; color: var(--ink); }
 
 /* ── 증명 카드 3장 ───────────────────────────────── */
-.vc-proof-label { font-size: 13.5px; font-weight: 700; color: var(--ink-2); margin-bottom: 12px; letter-spacing: -.02em; }
+.vc-proof-label {
+  font-size: clamp(.98rem, 1.7vw, 1.12rem); font-weight: 700; color: var(--ink);
+  margin-bottom: 14px; letter-spacing: -.035em; line-height: 1.45;
+}
 .vc-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .vc-pcard {
   background: var(--white); border: 1px solid var(--line);
@@ -266,8 +274,13 @@ body { background: #F5F2FF; }
   transform: rotate(45deg);
 }
 .vc-consent-row b { color: var(--violet); font-weight: 800; }
+.vc-consent-links { display: flex; align-items: center; gap: 14px; margin: 7px 0 0 32px; }
+.vc-consent-links a {
+  font-size: 12.5px; font-weight: 600; color: var(--muted); text-decoration: underline;
+}
+.vc-consent-links a:hover { color: var(--violet); }
 .vc-consent-toggle {
-  display: block; margin: 7px 0 0 32px; padding: 0; border: 0; background: none;
+  display: block; margin: 0; padding: 0; border: 0; background: none;
   font-family: inherit; font-size: 12.5px; font-weight: 600; color: var(--muted);
   text-decoration: underline; cursor: pointer;
 }
@@ -453,6 +466,7 @@ body { background: #F5F2FF; }
   font-size: 15px; font-weight: 700; letter-spacing: -.02em;
 }
 .vc-plan-flow em { font-style: normal; color: var(--muted); font-weight: 600; margin-right: 6px; }
+.vc-flow-steps { display: contents; }   /* PC 에서는 한 줄로 이어짐 */
 .vc-plan-flow i { font-style: normal; color: var(--violet); }
 
 /* ── 체크리스트 ──────────────────────────────────── */
@@ -596,8 +610,7 @@ body { background: #F5F2FF; }
 @media (max-width: 1000px) {
   .vc-hero-grid, .vc-final, .vc-who { grid-template-columns: 1fr; gap: 40px; }
   .vc-formcard--sticky, .vc-photo { position: static; }
-  .vc-photo { max-width: 420px; }
-  .vc-photo-slot { padding-top: 72%; }
+  .vc-photo { max-width: 330px; margin-left: auto; margin-right: auto; }
   .vc-plans { grid-template-columns: 1fr; }
   .vc-benefits { grid-template-columns: repeat(3, 1fr); padding: 36px 26px; }
   .vc-foot-top { grid-template-columns: 1fr 1fr; }
@@ -617,7 +630,19 @@ body { background: #F5F2FF; }
   .vc-proc { margin-top: 52px; }
   .vc p.vc-proc-label { text-align: left; }
   .vc p.vc-punch { margin: 77px 0 0; }
-  .vc-benefits { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+  /* 모바일 전용 줄바꿈 켜기 */
+  .vc-brm { display: inline; }
+
+  /* '어느 쪽이든 시작은 같습니다' 를 윗줄에, 절차를 아랫줄에 */
+  .vc-plan-flow { flex-direction: column; gap: 12px; text-align: center; }
+  .vc-plan-flow em { margin-right: 0; }
+  .vc-flow-steps { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
+  .vc-benefits { grid-template-columns: repeat(3, 1fr); gap: 22px 10px; padding: 30px 16px; }
+  .vc-benefit .vc-bico { width: 44px; height: 44px; border-radius: 13px; margin-bottom: 10px; }
+  .vc-benefit h4 { font-size: 13.5px; }
+  .vc-benefit p { font-size: 11.5px; }
+  .vc-benefit em { font-size: 10.5px; }
   .vc-card { padding: 26px 22px; }
   .vc-formcard { padding: 24px 20px; }
   .vc-qblock { margin-bottom: 38px; }
@@ -664,7 +689,7 @@ body { background: #F5F2FF; }
 
         <h1 class="vc-h1">
           <span class="vc-quote-line">“저희는 딱히 기술이랄 게 없는데요.”</span>
-          그런 회사에서 <span class="vc-vio">벤처기업의 근거</span>를 찾아냅니다.
+          그런 회사에서<br class="vc-brm" /> <span class="vc-vio">벤처기업의 근거</span>를 찾아냅니다.
         </h1>
 
         <p class="vc-hero-sub">기술이 없는 게 아닙니다. <strong>증명할 구조가 없는 겁니다.</strong></p>
@@ -732,12 +757,15 @@ body { background: #F5F2FF; }
               <input id="f1-consent" name="consent" type="checkbox" />
               <span><b>[필수]</b> 개인정보 수집 및 이용에 동의합니다.</span>
             </label>
-            <button class="vc-consent-toggle" type="button">내용 보기</button>
+            <div class="vc-consent-links">
+              <button class="vc-consent-toggle" type="button">내용 보기</button>
+              <a href="https://policy.markable.kr/privacy" target="_blank" rel="noopener">처리방침 전문</a>
+            </div>
             <div class="vc-consent-body">
               <p>· 수집 항목 — 이름, 전화번호, 이메일, 관심 서비스</p>
-              <p>· 수집 목적 — 벤처인증 상담 진행 및 결과 안내</p>
-              <p>· 보유 기간 — 상담 종료 후 1년 (철회 요청 시 즉시 파기)</p>
-              <p>· 동의를 거부하실 수 있으며, 이 경우 상담 신청이 어렵습니다.</p>
+              <p>· 수집 목적 — 관심 서비스에 대한 유료 상품 안내 및 유선 상담</p>
+              <p>· 보유 기간 — 상담 및 상품 안내 종료 후 1년 (철회 요청 시 즉시 파기)</p>
+              <p>· 동의를 거부하실 수 있으며, 이 경우 관심 서비스에 대한 상담 및 유료 상품 안내를 받으실 수 없습니다.</p>
             </div>
             <span class="vc-err">개인정보 수집에 동의해 주세요.</span>
           </div>
@@ -790,7 +818,7 @@ body { background: #F5F2FF; }
         </div>
       </div>
 
-      <div class="vc-pull vc-rv">서류를 다 채워도 떨어집니다. 평가는 기술의 혁신성과 사업의 성장성을 보니까요.</div>
+      <div class="vc-pull vc-rv">서류를 다 채워도 떨어집니다.<br class="vc-brm" /> 평가는 기술의 혁신성과 사업의 성장성을 보니까요.</div>
     </div>
   </section>
 
@@ -800,7 +828,7 @@ body { background: #F5F2FF; }
       <div class="vc-qblock vc-rv">
         <div class="vc-qtag">질문 둘</div>
         <h2 class="vc-qmega">왜 그걸<br /><em>변리사</em>가 하는가?</h2>
-        <p class="vc-qans">기술 근거 중에서, 지금부터 새로 만들 수 있는 것은 특허이기 때문입니다.</p>
+        <p class="vc-qans">기술 근거 중에서,<br class="vc-brm" /> 지금부터 새로 만들 수 있는 것은 특허이기 때문입니다.</p>
       </div>
 
       <div class="vc-bigs">
@@ -839,7 +867,7 @@ body { background: #F5F2FF; }
         </ol>
       </div>
 
-      <p class="vc-punch vc-rv">다른 곳은 서류를 채웁니다. 저희는 근거를 만듭니다.</p>
+      <p class="vc-punch vc-rv">다른 곳은 서류를 채웁니다.<br class="vc-brm" /> 저희는 근거를 만듭니다.</p>
     </div>
   </section>
 
@@ -903,7 +931,8 @@ body { background: #F5F2FF; }
           </ul>
 
           <div class="vc-who-pull vc-rv">
-            서류를 대신 쓰는 것이 아니라, <b>회사 안에 이미 있는 기술을 찾아 평가받을 수 있는 구조로 만드는 것.</b>
+            서류를 대신 쓰는 것이 아니라,<br />
+            <b>회사 안에 이미 있는 기술을 찾아 평가받을 수 있는 구조로 만드는 것.</b><br />
             이것이 박세준 변리사가 벤처인증을 하는 방식입니다.
           </div>
         </div>
@@ -996,7 +1025,7 @@ body { background: #F5F2FF; }
 
       <div class="vc-plan-flow vc-rv">
         <em>어느 쪽이든 시작은 같습니다</em>
-        <span>신청</span><i>→</i><span>전화 상담</span><i>→</i><span>미팅</span>
+        <div class="vc-flow-steps"><span>신청</span><i>→</i><span>전화 상담</span><i>→</i><span>미팅</span></div>
       </div>
     </div>
   </section>
@@ -1149,12 +1178,15 @@ body { background: #F5F2FF; }
               <input id="f2-consent" name="consent" type="checkbox" />
               <span><b>[필수]</b> 개인정보 수집 및 이용에 동의합니다.</span>
             </label>
-            <button class="vc-consent-toggle" type="button">내용 보기</button>
+            <div class="vc-consent-links">
+              <button class="vc-consent-toggle" type="button">내용 보기</button>
+              <a href="https://policy.markable.kr/privacy" target="_blank" rel="noopener">처리방침 전문</a>
+            </div>
             <div class="vc-consent-body">
               <p>· 수집 항목 — 이름, 전화번호, 이메일, 관심 서비스</p>
-              <p>· 수집 목적 — 벤처인증 상담 진행 및 결과 안내</p>
-              <p>· 보유 기간 — 상담 종료 후 1년 (철회 요청 시 즉시 파기)</p>
-              <p>· 동의를 거부하실 수 있으며, 이 경우 상담 신청이 어렵습니다.</p>
+              <p>· 수집 목적 — 관심 서비스에 대한 유료 상품 안내 및 유선 상담</p>
+              <p>· 보유 기간 — 상담 및 상품 안내 종료 후 1년 (철회 요청 시 즉시 파기)</p>
+              <p>· 동의를 거부하실 수 있으며, 이 경우 관심 서비스에 대한 상담 및 유료 상품 안내를 받으실 수 없습니다.</p>
             </div>
             <span class="vc-err">개인정보 수집에 동의해 주세요.</span>
           </div>
@@ -1214,15 +1246,14 @@ body { background: #F5F2FF; }
           <li><b>상호</b><span>마커블</span></li>
           <li><b>대표자</b><span>박세준</span></li>
           <li><b>사업자등록번호</b><span>472-74-00225</span></li>
-          <li><b>주소</b><span>[사업장 주소를 넣어주세요]</span></li>
+          <li><b>주소</b><span>서울특별시 강남구 테헤란로 418, 1101호</span></li>
           <li><b>전화</b><span><a href="tel:07041381116">070-4138-1116</a></span></li>
           <li><b>이메일</b><span><a href="mailto:team@markable.co.kr">team@markable.co.kr</a></span></li>
           <li><b>통신판매업 신고</b><span>제2023-서울금천-2693호</span></li>
           <li><b>개인정보 보호책임자</b><span>박세준</span></li>
         </ul>
         <p class="vc-foot-policy">
-          <a href="/privacy">개인정보처리방침</a>
-          <a href="/terms">이용약관</a>
+          <a href="https://policy.markable.kr/privacy" target="_blank" rel="noopener">개인정보처리방침</a>
           <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=4727400225" target="_blank" rel="noopener">사업자정보 확인</a>
         </p>
       </div>
@@ -1274,12 +1305,15 @@ body { background: #F5F2FF; }
               <input id="f3-consent" name="consent" type="checkbox" />
               <span><b>[필수]</b> 개인정보 수집 및 이용에 동의합니다.</span>
             </label>
-            <button class="vc-consent-toggle" type="button">내용 보기</button>
+            <div class="vc-consent-links">
+              <button class="vc-consent-toggle" type="button">내용 보기</button>
+              <a href="https://policy.markable.kr/privacy" target="_blank" rel="noopener">처리방침 전문</a>
+            </div>
             <div class="vc-consent-body">
               <p>· 수집 항목 — 이름, 전화번호, 이메일, 관심 서비스</p>
-              <p>· 수집 목적 — 벤처인증 상담 진행 및 결과 안내</p>
-              <p>· 보유 기간 — 상담 종료 후 1년 (철회 요청 시 즉시 파기)</p>
-              <p>· 동의를 거부하실 수 있으며, 이 경우 상담 신청이 어렵습니다.</p>
+              <p>· 수집 목적 — 관심 서비스에 대한 유료 상품 안내 및 유선 상담</p>
+              <p>· 보유 기간 — 상담 및 상품 안내 종료 후 1년 (철회 요청 시 즉시 파기)</p>
+              <p>· 동의를 거부하실 수 있으며, 이 경우 관심 서비스에 대한 상담 및 유료 상품 안내를 받으실 수 없습니다.</p>
             </div>
             <span class="vc-err">개인정보 수집에 동의해 주세요.</span>
           </div>
