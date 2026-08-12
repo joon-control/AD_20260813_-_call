@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Disallow: /thanks
+
+# AI 검색·학습 크롤러 — 서비스 소개 페이지이므로 수집 허용
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# 벤처기업인증.kr
+Sitemap: https://xn--ok0b27ym0gzvbp4dy9f.kr/sitemap.xml
