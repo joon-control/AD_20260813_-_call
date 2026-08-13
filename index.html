@@ -1454,7 +1454,7 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
      ENDPOINT   : Make 웹훅 / 스냅런처 폼 주소. 비우면 실제 전송 없이 화면 처리만 됩니다.
      THANKS_URL : 완료 페이지 주소. 비우면 폼 카드 자리에서 완료 메시지만 표시합니다.
      ──────────────────────── */
-  var ENDPOINT   = "https://hook.eu2.make.com/re543tyqnfxvmh72qey1djy4a2j84jgm";
+  var ENDPOINT   = "";
   var THANKS_URL = "/thanks";
   var CONSENT_VERSION = "2026-08-12";   /* 동의문 문구를 고치면 이 날짜도 바꾸세요 */
 
@@ -1494,6 +1494,15 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
     'consulting':   '벤처인증 컨설팅',
     'patent-first': '특허부터 시작하는 벤처인증',
     'full':         '벤처인증 대행'
+  };
+  var PLAN_FALLBACK = '벤처인증 상담';   /* 서비스를 고르지 않은 경우 */
+
+  var SOURCE_LABEL = {
+    'hero':       '첫 화면 폼',
+    'plan-card':  '상품 카드',
+    'plan-modal': '상품 카드',
+    'nav':        '상단 버튼',
+    'final':      '마지막 폼'
   };
 
   var modal      = document.getElementById('vc-modal');
@@ -1616,7 +1625,9 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
         phone: phone.value.trim(),
         email: email.value.trim(),
         plan: plan ? plan.value : '',
+        planLabel: PLAN_LABEL[plan ? plan.value : ''] || PLAN_FALLBACK,
         source: form.getAttribute('data-source') || '',
+        sourceLabel: SOURCE_LABEL[form.getAttribute('data-source')] || '기타',
         page: '벤처인증 랜딩',
         consent: okConsent,
         consentAt: consent ? (consent.dataset.checkedAt || '') : '',
