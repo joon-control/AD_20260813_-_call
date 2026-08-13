@@ -1457,6 +1457,7 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
   var ENDPOINT   = "https://hook.eu2.make.com/re543tyqnfxvmh72qey1djy4a2j84jgm";
   var THANKS_URL = "/thanks";
   var CONSENT_VERSION = "2026-08-12";   /* 동의문 문구를 고치면 이 날짜도 바꾸세요 */
+  var FORM_TOKEN = "vclanding";         /* Make 필터용 표식 — 스캐너 요청을 걸러냅니다 */
 
   /* 시각을 KST 오프셋이 붙은 ISO 8601 로 (예: 2026-08-12T14:32:05+09:00) */
   function stamp() {
@@ -1629,6 +1630,7 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
         source: form.getAttribute('data-source') || '',
         sourceLabel: SOURCE_LABEL[form.getAttribute('data-source')] || '기타',
         page: '벤처인증 랜딩',
+        token: FORM_TOKEN,
         consent: okConsent,
         consentAt: consent ? (consent.dataset.checkedAt || '') : '',
         consentVersion: CONSENT_VERSION,
