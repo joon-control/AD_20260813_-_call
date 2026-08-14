@@ -55,9 +55,9 @@
         "@type": "OfferCatalog",
         "name": "벤처인증 서비스",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "벤처인증 컨설팅", "description": "사업계획서 작성과 기술성 논리 설계를 지원합니다." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "특허부터 시작하는 벤처인증", "description": "특허 출원·등록, 연구전담부서 설립, 벤처인증 신청까지 요건부터 만들어 갑니다." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "벤처인증 대행", "description": "서류 준비부터 신청, 평가·실사 대응까지 전 과정을 대행합니다." } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "사업계획서 지원", "description": "벤처인증 사업계획서 작성과 기술성 논리 설계를 지원합니다." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "벤처인증 전 과정 대행", "description": "준비서류 확인부터 사업계획서 작성, 신청과 평가·실사 대응까지 전 과정을 대행합니다." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "기술 근거 설계부터 벤처인증까지", "description": "사업 안에서 기술을 찾아 특허로 권리화하고, 연구전담부서 설립을 거쳐 벤처인증까지 하나의 구조로 연결합니다." } }
         ]
       }
     },
@@ -98,6 +98,7 @@
   ]
 }
 </script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 
 <style>
@@ -167,7 +168,15 @@ body { background: #F5F2FF; }
 }
 .vc-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--violet); }
 
-.vc-h1 { font-size: clamp(1.55rem, 3.4vw, 2.25rem); font-weight: 800; line-height: 1.36; letter-spacing: -.05em; margin: 0 0 22px; }
+/* 히어로 라벨은 본문급으로 키움 (PC 기준, 모바일은 자동 축소) */
+.vc-hero .vc-eyebrow {
+  font-size: clamp(.92rem, 1.9vw, 1.32rem); font-weight: 800;
+  letter-spacing: -.03em; text-transform: none;
+  padding: 10px 20px; margin-bottom: 20px;
+}
+.vc-hero .vc-eyebrow::before { width: 7px; height: 7px; }
+
+.vc-h1 { font-size: clamp(1.62rem, 3.7vw, 2.45rem); font-weight: 800; line-height: 1.34; letter-spacing: -.05em; margin: 0 0 20px; }
 .vc-h2 { font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 800; line-height: 1.34; letter-spacing: -.04em; margin: 0 0 14px; }
 .vc-h3 { font-size: clamp(1.1rem, 1.9vw, 1.32rem); font-weight: 700; line-height: 1.45; letter-spacing: -.03em; margin: 0 0 10px; }
 .vc-lead { font-size: clamp(1rem, 1.5vw, 1.1rem); color: var(--ink-2); }
@@ -252,22 +261,22 @@ body { background: #F5F2FF; }
     radial-gradient(40% 44% at 82% 18%, rgba(180, 150, 255, .28), transparent 70%);
   pointer-events: none;
 }
-.vc-hero-grid { position: relative; display: grid; grid-template-columns: 1.14fr .86fr; gap: 52px; align-items: start; }
+.vc-hero-grid { position: relative; display: grid; grid-template-columns: 1.18fr .82fr; gap: 48px; align-items: start; }
 .vc-quote-line {
   display: block; font-size: clamp(1.12rem, 2.3vw, 1.55rem); font-weight: 700;
   color: var(--ink); letter-spacing: -.05em; line-height: 1.4;
-  margin-bottom: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  margin-bottom: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--line);
 }
 .vc-hero-sub {
-  max-width: 480px; font-size: clamp(1rem, 1.7vw, 1.1rem); font-weight: 500;
-  letter-spacing: -.035em; line-height: 1.65; color: var(--ink-2); margin-bottom: 34px;
+  font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 600;
+  letter-spacing: -.045em; line-height: 1.5; color: var(--ink-2); margin-bottom: 16px;
 }
 .vc-hero-sub strong { font-weight: 700; color: var(--ink); }
 
 /* ── 증명 카드 3장 ───────────────────────────────── */
 .vc-proof-label {
-  font-size: clamp(.98rem, 1.7vw, 1.12rem); font-weight: 700; color: var(--ink);
-  margin-bottom: 14px; letter-spacing: -.035em; line-height: 1.5;
+  font-size: clamp(.98rem, 2vw, 1.35rem); font-weight: 700; color: var(--ink);
+  margin-bottom: 16px; letter-spacing: -.045em; line-height: 1.5;
 }
 .vc-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .vc-pcard {
@@ -334,6 +343,7 @@ body { background: #F5F2FF; }
   transition: border-color .18s, background .18s, box-shadow .18s;
 }
 .vc-field select { appearance: none; cursor: pointer; }
+.vc-field select option { font-family: inherit; }
 .vc-field input::placeholder { color: #B4AEC6; }
 .vc-field input:focus, .vc-field select:focus {
   outline: none; border-color: var(--violet); background: var(--white);
@@ -453,6 +463,7 @@ body { background: #F5F2FF; }
 }
 .vc-step h4 { margin: 0 0 8px; font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 800; letter-spacing: -.04em; color: #fff; }
 .vc-step p { font-size: 15px; line-height: 1.6; color: #C9BEF0; margin: 0; }
+.vc-sp { display: inline-block; width: 1.1em; }   /* 문장 사이 여백 */
 .vc p.vc-punch {
   margin: 97px 0 0; text-align: center;
   font-size: clamp(1.25rem, 2.8vw, 1.9rem); font-weight: 800; letter-spacing: -.045em; color: #fff;
@@ -516,28 +527,51 @@ body { background: #F5F2FF; }
 
 /* ── 상품 3종 ────────────────────────────────────── */
 .vc-plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+@media (min-width: 1001px) {
+  /* 배지 높이만큼 세 카드 모두 위 여백을 동일하게 → 제목·구분선이 한 줄로 정렬 */
+  .vc-plans .vc-plan { padding-top: 52px; }
+  .vc-plans .vc-plan-when { min-height: 2.7em; }
+  .vc-plans .vc-plan-when-sub { min-height: 3.1em; }
+}
 .vc-plan {
-  display: flex; flex-direction: column;
+  position: relative; display: flex; flex-direction: column;
   background: var(--white); border: 1px solid var(--line);
-  border-radius: var(--r-lg); padding: 32px 28px; box-shadow: var(--shadow-sm);
+  border-radius: var(--r-lg); padding: 30px 26px 26px; box-shadow: var(--shadow-sm);
+  overflow: hidden;   /* 모서리 리본을 카드 곡선에 맞춰 잘라냄 */
   transition: transform .25s ease, border-color .25s ease;
 }
 .vc-plan:hover { transform: translateY(-5px); border-color: #CFC3F5; }
-.vc-plan-when { font-size: 1.24rem; font-weight: 800; letter-spacing: -.045em; line-height: 1.35; margin: 0 0 8px; }
-.vc-plan-name { font-size: 13px; font-weight: 700; color: var(--violet); margin: 0 0 18px; letter-spacing: -.02em; }
-.vc-plan-name em { font-style: normal; color: var(--muted); font-weight: 600; }
-.vc-plan-list { list-style: none; margin: 0 0 20px; padding: 0; }
+.vc-plan-when { font-size: clamp(1.3rem, 1.9vw, 1.5rem); font-weight: 800; letter-spacing: -.045em; line-height: 1.34; margin: 0 0 11px; }
+.vc-plan-when-sub {
+  font-size: clamp(14px, 1.2vw, 15.5px); font-weight: 600; color: var(--ink-2);
+  line-height: 1.55; letter-spacing: -.035em; margin: 0 0 20px;
+  padding-bottom: 18px; border-bottom: 1px solid var(--line);
+}
+
+/* ③ 주력 카드 — 배지는 테두리 위에 띄워 세 카드의 내부 구조를 동일하게 유지 */
+.vc-plan--main { border-color: #C3B4F3; box-shadow: 0 20px 46px -22px rgba(91, 61, 245, .38); }
+.vc-plan--main .vc-plan-when-sub { border-bottom-color: #E0D8FA; }
+.vc-plan-badge {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  padding: 8px 20px; white-space: nowrap;
+  font-size: 12px; font-weight: 800; letter-spacing: -.02em;
+  background: var(--violet); color: #fff;
+  border-radius: 0 0 999px 999px;
+  box-shadow: 0 8px 18px -10px rgba(42, 27, 107, .7);
+}
+.vc-plan-list { list-style: none; margin: 0 0 18px; padding: 0; }
 .vc-plan-list li {
-  position: relative; padding-left: 22px; font-size: 15px; color: var(--ink-2); line-height: 1.6; margin-bottom: 8px;
+  position: relative; padding-left: 23px; font-size: 15.5px; font-weight: 500;
+  color: var(--ink-2); line-height: 1.6; margin-bottom: 13px; letter-spacing: -.03em;
 }
 .vc-plan-list li::before {
   content: ""; position: absolute; left: 4px; top: 9px;
   width: 7px; height: 7px; border-radius: 2px; background: var(--violet);
 }
-.vc-plan-road { background: #F7F5FF; border-radius: var(--r-sm); padding: 14px; margin-bottom: 18px; }
-.vc-plan-road div { display: flex; align-items: baseline; gap: 10px; font-size: 13.5px; margin-bottom: 7px; }
+.vc-plan-road { background: #F7F5FF; border-radius: var(--r-sm); padding: 15px 16px; margin-bottom: 18px; }
+.vc-plan-road div { display: flex; align-items: baseline; gap: 10px; font-size: 14.5px; margin-bottom: 10px; letter-spacing: -.03em; }
 .vc-plan-road div:last-child { margin-bottom: 0; }
-.vc-plan-road b { flex: none; width: 62px; font-weight: 800; color: var(--violet); font-size: 12px; letter-spacing: -.01em; }
+.vc-plan-road b { flex: none; width: 58px; font-weight: 800; color: var(--violet); font-size: 12.5px; letter-spacing: -.01em; }
 .vc-plan-road span { color: var(--ink-2); font-weight: 600; }
 .vc-plan-time {
   margin-top: auto; display: flex; align-items: center; justify-content: space-between;
@@ -723,6 +757,19 @@ body { background: #F5F2FF; }
 
   /* 모바일 전용 줄바꿈 켜기 */
   .vc-brm { display: inline; }
+  .vc-sp { display: none; }
+
+  /* 서비스 카드: 세로로 쌓이므로 높이 맞춤 해제, 여백 축소 */
+  .vc-plans { gap: 26px; }
+  .vc-plan { padding: 26px 22px 24px; }
+  .vc-plan-when { font-size: 1.38rem; }
+  .vc-plan-when-sub { font-size: 15px; margin-bottom: 16px; padding-bottom: 15px; }
+  .vc-plan-badge { font-size: 11.5px; padding: 7px 18px; }
+  .vc-plans .vc-plan { padding-top: 48px; }
+  .vc-plan-list li { font-size: 15.5px; margin-bottom: 11px; }
+  .vc-plan-road { padding: 13px 14px; }
+  .vc-plan-road div { font-size: 14px; margin-bottom: 9px; }
+  .vc-plan-road b { width: 52px; }
 
   /* 혜택 띠: 안내문 한 줄 + 키워드 3개씩 2줄, 모두 가운데 */
   .vc-strip { margin-top: 44px; padding: 20px 0; }
@@ -800,7 +847,7 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
 
         <h1 class="vc-h1">
           <span class="vc-quote-line">“저희는 딱히 기술이랄 게 없는데요.”</span>
-          그런 회사에서<br class="vc-brm" /> <span class="vc-vio">벤처기업의 근거</span>를 찾아냅니다.
+          그런 회사에서<br /><span class="vc-vio">벤처기업의 근거</span>를 찾아냅니다.
         </h1>
 
         <p class="vc-hero-sub">기술이 없는 게 아닙니다. <strong>증명할 구조가 없는 겁니다.</strong></p>
@@ -856,10 +903,10 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
           <div class="vc-field">
             <label for="f1-plan">지금 회사 상황</label>
             <select id="f1-plan" name="plan">
-              <option value="">아직 모르겠습니다</option>
-              <option value="consulting">사업계획서에서 막혔습니다</option>
-              <option value="patent-first">요건부터 만들어야 합니다</option>
-              <option value="full">처음부터 끝까지 맡기고 싶습니다</option>
+              <option value="">아직 잘 모르겠습니다</option>
+              <option value="consulting">사업계획서 기술성 부분이 어렵습니다</option>
+              <option value="full">빨리 신청하고 싶고, 전부 맡기고 싶습니다</option>
+              <option value="patent-first">특허 · 연구전담부서가 아직 없습니다</option>
             </select>
           </div>
 
@@ -980,7 +1027,7 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
         </ol>
       </div>
 
-      <p class="vc-punch vc-rv">다른 곳은 서류를 채웁니다.<br class="vc-brm" /> 저희는 근거를 만듭니다.</p>
+      <p class="vc-punch vc-rv">다른 곳은 서류를 채웁니다.<br class="vc-brm" /><span class="vc-sp"></span>저희는 근거를 만듭니다.</p>
     </div>
   </section>
 
@@ -1092,46 +1139,50 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
     <div class="vc-wrap">
       <div class="vc-head vc-rv">
         <span class="vc-eyebrow">서비스</span>
-        <h2 class="vc-h2">대표님은 어디에 해당하시나요?</h2>
-        <p class="vc-lead">지금 회사 상태에 따라 시작점이 달라집니다.</p>
+        <h2 class="vc-h2">어디서부터 시작할지는<br class="vc-brm" /> 회사마다 다릅니다</h2>
+        <p class="vc-lead">지금 무엇이 준비되어 있는지 보고, 시작점을 함께 정합니다.</p>
       </div>
 
       <div class="vc-plans">
 
         <div class="vc-plan vc-rv">
-          <h3 class="vc-plan-when">사업계획서에서<br />막혔다면</h3>
-          <p class="vc-plan-name">벤처인증 컨설팅 <em>· 스스로 하세요</em></p>
+          <h3 class="vc-plan-when">사업계획서를<br />함께 씁니다</h3>
+          <p class="vc-plan-when-sub">사업계획서 기술성 부분이<br class="vc-brm" /> 어렵다면</p>
           <ul class="vc-plan-list">
-            <li>사업계획서 작성</li>
+            <li>사업 내용 정리</li>
             <li>기술성 논리 설계</li>
-            <li>사업 컨설팅</li>
+            <li>사업계획서 작성</li>
+            <li>제출 전 최종 점검</li>
           </ul>
           <div class="vc-plan-time"><small>기간</small><b>상담 후 협의</b></div>
           <a class="vc-btn vc-btn--line vc-btn--block" href="#apply" data-plan="consulting" data-source="plan-card">상담 예약하기</a>
         </div>
 
         <div class="vc-plan vc-rv">
-          <h3 class="vc-plan-when">요건부터<br />만들어야 한다면</h3>
-          <p class="vc-plan-name">특허부터 시작하는 벤처인증 <em>· 무조건 해냄</em></p>
-          <div class="vc-plan-road">
-            <div><b>1단계</b><span>특허 출원 · 등록</span></div>
-            <div><b>2단계</b><span>연구전담부서 설립</span></div>
-            <div><b>3단계</b><span>벤처인증 신청</span></div>
-          </div>
-          <div class="vc-plan-time"><small>기간</small><b>약 1년 6개월</b></div>
-          <a class="vc-btn vc-btn--line vc-btn--block" href="#apply" data-plan="patent-first" data-source="plan-card">상담 예약하기</a>
-        </div>
-
-        <div class="vc-plan vc-rv">
-          <h3 class="vc-plan-when">처음부터 끝까지<br />맡기고 싶다면</h3>
-          <p class="vc-plan-name">벤처인증 대행 <em>· 전부 다 맡기세요</em></p>
+          <h3 class="vc-plan-when">처음부터 끝까지<br />대행합니다</h3>
+          <p class="vc-plan-when-sub">빨리 신청하고 싶고,<br class="vc-brm" /> 전부 맡기고 싶다면</p>
           <ul class="vc-plan-list">
-            <li>서류 준비부터 신청까지</li>
+            <li>준비서류 확인 · 발급</li>
             <li>사업계획서 작성</li>
+            <li>벤처인증 신청</li>
             <li>평가 · 실사 대응</li>
           </ul>
           <div class="vc-plan-time"><small>기간</small><b>통상 3개월</b></div>
           <a class="vc-btn vc-btn--line vc-btn--block" href="#apply" data-plan="full" data-source="plan-card">상담 예약하기</a>
+        </div>
+
+        <div class="vc-plan vc-plan--main vc-rv">
+          <span class="vc-plan-badge">가장 많이 상담하는 경우</span>
+          <h3 class="vc-plan-when">기술 근거부터<br />설계합니다</h3>
+          <p class="vc-plan-when-sub">특허 · 연구전담부서가<br class="vc-brm" /> 아직 없다면</p>
+          <div class="vc-plan-road">
+            <div><b>1단계</b><span>현재 상태 진단</span></div>
+            <div><b>2단계</b><span>특허 출원 · 등록</span></div>
+            <div><b>3단계</b><span>연구전담부서 설립</span></div>
+            <div><b>4단계</b><span>벤처인증 신청</span></div>
+          </div>
+          <div class="vc-plan-time"><small>기간</small><b>약 1년 6개월</b></div>
+          <a class="vc-btn vc-btn--line vc-btn--block" href="#apply" data-plan="patent-first" data-source="plan-card">상담 예약하기</a>
         </div>
 
       </div>
@@ -1153,7 +1204,7 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
 
       <div class="vc-checks">
         <div class="vc-check vc-rv"><i>✓</i><span>투자 유치 이력이 없다</span></div>
-        <div class="vc-check vc-rv"><i>✓</i><span>특허가 하나도 없다</span></div>
+        <div class="vc-check vc-rv"><i>✓</i><span>특허 · 연구전담부서가 아직 없다</span></div>
         <div class="vc-check vc-rv"><i>✓</i><span>사업계획서 기술성에서 손이 멈춘다</span></div>
         <div class="vc-check vc-rv"><i>✓</i><span>한 번 신청했다가 떨어졌다</span></div>
         <div class="vc-check vc-rv"><i>✓</i><span>정부지원사업 가점이 당장 필요하다</span></div>
@@ -1279,10 +1330,10 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
           <div class="vc-field">
             <label for="f2-plan">지금 회사 상황</label>
             <select id="f2-plan" name="plan">
-              <option value="">아직 모르겠습니다</option>
-              <option value="consulting">사업계획서에서 막혔습니다</option>
-              <option value="patent-first">요건부터 만들어야 합니다</option>
-              <option value="full">처음부터 끝까지 맡기고 싶습니다</option>
+              <option value="">아직 잘 모르겠습니다</option>
+              <option value="consulting">사업계획서 기술성 부분이 어렵습니다</option>
+              <option value="full">빨리 신청하고 싶고, 전부 맡기고 싶습니다</option>
+              <option value="patent-first">특허 · 연구전담부서가 아직 없습니다</option>
             </select>
           </div>
 
@@ -1336,10 +1387,10 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
         <div>
           <h5>서비스</h5>
           <ul class="vc-foot-links">
-            <li><a href="#plans">벤처인증 컨설팅</a></li>
-            <li><a href="#plans">특허부터 시작하는 벤처인증</a></li>
-            <li><a href="#plans">벤처인증 대행</a></li>
-            <li><a href="#apply">무료 상담 예약</a></li>
+            <li><a href="#plans">사업계획서를 함께 씁니다</a></li>
+            <li><a href="#plans">처음부터 끝까지 대행합니다</a></li>
+            <li><a href="#plans">기술 근거부터 설계합니다</a></li>
+            <li><a href="#apply">상담 예약하기</a></li>
           </ul>
         </div>
 
@@ -1492,9 +1543,9 @@ src="https://www.facebook.com/tr?id=1825527621452548&ev=PageView&noscript=1" alt
 
   /* ───────── 상담 모달 ───────── */
   var PLAN_LABEL = {
-    'consulting':   '벤처인증 컨설팅',
-    'patent-first': '특허부터 시작하는 벤처인증',
-    'full':         '벤처인증 대행'
+    'consulting':   '사업계획서 지원',
+    'full':         '벤처인증 전 과정 대행',
+    'patent-first': '기술 근거 설계부터 벤처인증까지'
   };
   var PLAN_FALLBACK = '벤처인증 상담';   /* 서비스를 고르지 않은 경우 */
 
